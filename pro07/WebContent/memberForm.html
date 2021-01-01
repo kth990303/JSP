@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+    <html>
+    <head>
+        <meta charset="UTF-8">
+        <title>회원 가입창</title>
+        <style>
+            body{
+                background-color: #F3F1E9;
+                height: 100%;
+            }
+            label{
+                display: inline-block;
+                width: 120px;
+            }
+            input{
+                display: inline-block;
+                width: 160px;
+            }
+        </style>
+        <script type="text/javascript">
+            function fn_sendMember(){
+                var frmMember=document.frmMember;
+                var id=frmMember.id.value;
+                var pwd=frmMember.pwd.value;
+                var tier=frmMember.tier.value;
+                if(id.length==0 ||id==""){
+                    alert("아이디는 필수입니다.");
+                }else if(pwd.length==0 ||pwd==""){
+                    alert("비밀번호는 필수입니다.");
+                }
+                else if(tier.length==0 ||tier==""){
+                    alert("이름은 필수입니다.");
+                }else{
+                    frmMember.method="post";
+                    frmMember.action="member3";
+                    frmMember.submit();
+                }
+            }
+            </script>
+    </head>
+    <body>
+        <form name="frmMember">
+            <fieldset>
+                <legend>회원 가입창</legend>
+                <label for="id">아이디</label>
+                <input type="text" name="id"><br>
+                <label for="pwd">비밀번호</label>
+                <input type="password" name="pwd"><br>
+                <label for="tier">티어</label>
+                <input type="text" name="tier"><br>
+            </fieldset>
+            <input type="button" value="가입하기" onclick="fn_sendMember()">
+            <input type="reset" value="다시입력">
+            <input type="hidden" name="command" value="addMember" />
+        </form>
+    </body>
+</html>
