@@ -90,5 +90,17 @@ public class MemberDAO {
 			e.printStackTrace();
 		}
 	}
-
+	public void modifyMember(String id) {
+		try {
+			con=dataFactory.getConnection();
+			String query="update t_member set tier='Silver I'" + " where id=?";
+			System.out.println("prepareStatement: "+query);
+			pstmt=con.prepareStatement(query);
+			pstmt.setString(1, id);
+			pstmt.executeUpdate();
+			pstmt.close();
+		} catch(Exception e) {
+			e.printStackTrace();
+		}
+	}
 }
